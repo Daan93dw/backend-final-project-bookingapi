@@ -1,0 +1,20 @@
+  Some notes for the winc teacher:
+
+  1) For the prisma setup I initially followed another guide so it didn't include the 'relationMode = "prisma"' line suggested for the datasource db object, as described in the assignment description. I ended up using onDelete: Cascade for related models. I know there are other options but that made the most sense to me.
+  -> /prisma/schema.prisma
+
+  2) Another difference from the course suggested code is with try catch blocks. I ended up finding a way to wrap the controller functions inside a asyncwrapper and it should catch any errors and push them to the errorHandler middleware. 
+  -> /src/routes/
+  -> /src/utils/asyncWrapper
+
+  3) I also seperated controller functions and service functions for each endpoint as it made it easier for me to keep track of everything.
+  -> /src/controllers/
+  -> /src/services/
+
+  4) I was a little confused about that there was no data included for what amenities each property should have or maybe I somehow missed that? I matched some amenities with properties in the prisma studio environment manually to test the properties query requirement of the assignment.
+
+  5) For protected routes, in the course you would include the auth middleware on each route that you want to protect. I ended up flipping it and simply using the auth middleware on every route and then making exceptions for unprotected routes. In our case for '/login' and GET requests. 
+  -> src\middleware\authMiddleware
+
+  I hope this is all ok, if not I can change it. Thanks!
+
